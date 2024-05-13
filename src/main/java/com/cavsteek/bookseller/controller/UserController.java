@@ -2,6 +2,9 @@ package com.cavsteek.bookseller.controller;
 
 import com.cavsteek.bookseller.model.Form;
 import com.cavsteek.bookseller.service.FormService;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,9 @@ import java.net.http.HttpResponse;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserController {
     private FormService formService;
     @PostMapping("/order-form")
