@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/admin")
 public class AdminController {
-    private FormService formService;
-    private DeliveryInfoService deliveryInfoService;
+    private final FormService formService;
+    private final DeliveryInfoService deliveryInfoService;
     @GetMapping("/form-info")
     public ResponseEntity<?> getFormInfo(@RequestBody Form form){
         try {

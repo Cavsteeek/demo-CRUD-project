@@ -19,7 +19,7 @@ import java.net.http.HttpResponse;
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
-    private FormService formService;
+    private final FormService formService;
     @PostMapping("/order-form")
     public ResponseEntity<?> newForm (@RequestBody Form form){
         try{
