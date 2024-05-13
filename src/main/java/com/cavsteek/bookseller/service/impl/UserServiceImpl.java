@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetailsService userDetailsService(){
-        return email -> userRepository.findByUsername(email)
+        return email -> userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean usernameExists(String email){
-        return userRepository.existsByUsername(email);
+    public boolean emailExists(String email){
+        return userRepository.existsByEmail(email);
     }
 
     @Override

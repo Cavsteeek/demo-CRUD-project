@@ -9,19 +9,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Table(name = "delivery_info")
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class DeliveryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String SerialNo;
+    private String serialNo;
 
-    private Integer NumberOfPieces;
+    private Integer numberOfPieces;
 
     @ManyToOne
     private User user;
+
+    @OneToOne
+    private Form form;
 
 }

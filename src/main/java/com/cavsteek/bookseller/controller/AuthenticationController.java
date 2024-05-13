@@ -21,7 +21,7 @@ public class AuthenticationController {
     @PostMapping("/sign-up")
     public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
         try {
-            if (userService.usernameExists(signUpRequest.getUsername())) {
+            if (userService.emailExists(signUpRequest.getEmail())) {
                 return ResponseEntity.badRequest().body("User with this Username already exists");
             }
             return ResponseEntity.ok(service.signUp(signUpRequest));

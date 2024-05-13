@@ -17,8 +17,6 @@ public class BookSellerApplication implements CommandLineRunner {
 
 	private final UserRepository userRepository;
 
-
-
 	public static void main(String[] args) {
 		try{
 			SpringApplication.run(BookSellerApplication.class, args);
@@ -34,7 +32,7 @@ public class BookSellerApplication implements CommandLineRunner {
 		User adminAccount = userRepository.findByRole(Role.ADMIN);
 			if (null == adminAccount) {
 				User admin = new User();
-				admin.setUsername("Admin");
+				admin.setStaffId("IT001");
 				admin.setFirstName("Hober");
 				admin.setLastName("Malo");
 				admin.setEmail("admin@gmail.com");

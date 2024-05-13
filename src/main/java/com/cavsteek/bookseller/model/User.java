@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @Column(name = "staffId", nullable = false, unique = true, length = 100)
     private String staffId;
 
-    @Column(name = "password",nullable = false, length = 100)
+    @Column(name = "password",nullable = false)
     private String password;
 
     @Column(name = "firstName",nullable = false, length = 100)
@@ -49,14 +49,10 @@ public class User implements UserDetails {
     @Column(name = "role", nullable = false)
     private Role role;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 
     @Override

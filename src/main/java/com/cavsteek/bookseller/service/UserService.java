@@ -10,14 +10,9 @@ import java.util.Optional;
 public interface UserService {
     UserDetailsService userDetailsService();
 
-//    Optional<User> findByEmail(String email);
-
-
     List<User> findUsersByRole();
 
-//    boolean emailExists(String email);
-
-    boolean usernameExists(String email);
+    boolean emailExists(String email);
 
     void deleteUser(Long id);
 }

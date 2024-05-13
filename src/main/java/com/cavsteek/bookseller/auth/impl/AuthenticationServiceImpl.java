@@ -29,7 +29,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     public User signUp(SignUpRequest signUpRequest) {
         User user = new User();
-        user.setUsername(signUpRequest.getUsername());
         user.setFirstName(capitalize(signUpRequest.getFirstName()));
         user.setLastName(capitalize(signUpRequest.getLastName()));
         user.setEmail(signUpRequest.getEmail());
@@ -48,19 +47,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public JwtAuthenticationResponse signIn(SignInRequest signInRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    signInRequest.getUsername(),
+                    signInRequest.getEmail(),
                     signInRequest.getPassword()));
-            var user = userRepository.findByUsername(signInRequest.getUsername())
+            var user = userRepository.findByEmail(signInRequest.getEmail())
                     .orElseThrow(
                             () -> new IllegalArgumentException("Invalid Username or Password")
                     );
             var jwt = jwtService.generateToken(user);
-            var username = jwtService.extractUsername(jwt);
+            var email = jwtService.extractUsername(jwt);
             var refreshToken = jwtService.generateRefreshToken(new HashMap<>(), user);
 
             JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
             jwtAuthenticationResponse.setToken(jwt);
-            jwtAuthenticationResponse.setUsername(username);
+            jwtAuthenticationResponse.setEmail(email);
             jwtAuthenticationResponse.setRole(user.getRole().toString());
             jwtAuthenticationResponse.setRefreshToken(refreshToken);
             jwtAuthenticationResponse.setUserId(user.getId());
@@ -73,7 +72,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
         String userName = jwtService.extractUsername(refreshTokenRequest.getToken());
-        User user = userRepository.findByUsername(userName).orElseThrow();
+        User user = userRepository.findByEmail(userName).orElseThrow();
         if (jwtService.isTokenValid(refreshTokenRequest.getToken(), user)) {
             var jwt = jwtService.generateToken(user);
 
