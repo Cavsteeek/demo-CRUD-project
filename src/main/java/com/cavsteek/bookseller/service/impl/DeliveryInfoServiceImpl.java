@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class DeliveryInfoServiceImpl implements DeliveryInfoService {
-    private DeliveryInfoRepository deliveryInfoRepository;
-    private FormRepository formRepository;
+    private final DeliveryInfoRepository deliveryInfoRepository;
+    private final FormRepository formRepository;
 
     @Override
     public DeliveryInfo saveDeliveryInfo(Long formId, String sNo, Integer numOfP) {

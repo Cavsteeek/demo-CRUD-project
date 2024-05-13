@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class FormServiceImpl implements FormService {
-    private FormRepository formRepository;
+    private final FormRepository formRepository;
 
     @Override
     public void saveForm(Form form) {
