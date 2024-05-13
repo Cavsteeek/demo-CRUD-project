@@ -18,9 +18,6 @@ import java.net.http.HttpResponse;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserController {
     private FormService formService;
     @PostMapping("/order-form")

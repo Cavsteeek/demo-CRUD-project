@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Table(name = "staff_form")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
