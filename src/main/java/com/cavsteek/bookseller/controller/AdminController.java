@@ -7,4 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api/v1/admin")
-public class AdminController {}
+public class AdminController {
+
+}
