@@ -26,8 +26,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true, length = 100)
-    private String username;
+    @Column(name = "staffId", nullable = false, unique = true, length = 100)
+    private String staffId;
 
     @Column(name = "password",nullable = false, length = 100)
     private String password;
@@ -49,11 +49,6 @@ public class User implements UserDetails {
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<PurchaseHistory> purchaseHistories;
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -66,7 +61,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override

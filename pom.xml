@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.cavsteek</groupId>
-	<artifactId>book-seller</artifactId>
+	<artifactId>demo-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>book-seller</name>
-	<description>Demo project for book store</description>
+	<description>Demo project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -41,11 +41,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -55,18 +51,6 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
 			<version>0.11.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.cloudinary</groupId>
-			<artifactId>cloudinary-http44</artifactId>
-			<version>1.36.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>

@@ -1,6 +1,4 @@
 package com.cavsteek.bookseller.model;
 
-public enum Role {
-    USER,
-    ADMIN,
+public class Form {
 }
