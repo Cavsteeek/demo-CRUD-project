@@ -17,7 +17,7 @@ public class AdminController {
     private final FormService formService;
     private final DeliveryInfoService deliveryInfoService;
     @GetMapping("/form-info")
-    public ResponseEntity<?> getFormInfo(@RequestBody Form form){
+    public ResponseEntity<?> getFormInfo(){
         try {
             return ResponseEntity.ok(formService.getFormInfo());
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class AdminController {
     }
 
     @GetMapping("/delivery-info")
-    public ResponseEntity<?> getDeliveryInfo(@RequestBody DeliveryInfo deliveryInfo){
+    public ResponseEntity<?> getDeliveryInfo(){
         try {
             return ResponseEntity.ok(deliveryInfoService.getDeliveryInfo());
         } catch (Exception e) {
