@@ -1,5 +1,6 @@
 package com.cavsteek.bookseller.controller;
 
+import com.cavsteek.bookseller.dto.DeliveryInfoDto;
 import com.cavsteek.bookseller.model.DeliveryInfo;
 import com.cavsteek.bookseller.model.Form;
 import com.cavsteek.bookseller.service.DeliveryInfoService;
@@ -28,9 +29,9 @@ public class AdminController {
 
 
     @PostMapping("/delivery-info/{formId}")
-    public ResponseEntity<?> createDeliveryInfo(@PathVariable Long formId, @PathVariable String sNO, @PathVariable Integer numOfP){
+    public ResponseEntity<?> createDeliveryInfo(@PathVariable Long formId, @RequestBody DeliveryInfoDto deliveryInfoDto){
         try {
-            DeliveryInfo deliveryInfo = deliveryInfoService.saveDeliveryInfo(formId, sNO, numOfP);
+            DeliveryInfo deliveryInfo = deliveryInfoService.saveDeliveryInfo(formId, deliveryInfoDto);
             return new ResponseEntity<>(deliveryInfo, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();

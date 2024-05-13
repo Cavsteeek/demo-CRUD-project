@@ -1,5 +1,6 @@
 package com.cavsteek.bookseller.service.impl;
 
+import com.cavsteek.bookseller.dto.DeliveryInfoDto;
 import com.cavsteek.bookseller.model.DeliveryInfo;
 import com.cavsteek.bookseller.model.Form;
 import com.cavsteek.bookseller.repository.DeliveryInfoRepository;
@@ -17,12 +18,12 @@ public class DeliveryInfoServiceImpl implements DeliveryInfoService {
     private final FormRepository formRepository;
 
     @Override
-    public DeliveryInfo saveDeliveryInfo(Long formId, String sNo, Integer numOfP) {
+    public DeliveryInfo saveDeliveryInfo(Long formId, DeliveryInfoDto deliveryInfoDto) {
         try {
             DeliveryInfo deliveryInfo = new DeliveryInfo();
             Form form = formRepository.findById(formId).orElseThrow(() -> new RuntimeException("Not found"));
-            deliveryInfo.setSerialNo(sNo);
-            deliveryInfo.setNumberOfPieces(numOfP);
+            deliveryInfo.setSerialNo(deliveryInfoDto.getSerialNo());
+            deliveryInfo.setNumberOfPieces(deliveryInfoDto.getNumOfP());
             deliveryInfo.setForm(form);
             return deliveryInfoRepository.save(deliveryInfo);
         } catch (Exception e) {
