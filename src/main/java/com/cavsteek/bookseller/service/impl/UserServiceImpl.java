@@ -17,26 +17,25 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return email -> userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
     @Override
-    public List<User> findUsersByRole(){
+    public List<User> findUsersByRole() {
         return userRepository.findAllUsersByRole(Role.USER);
     }
 
     @Override
-    public boolean emailExists(String email){
+    public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
     }
 
     @Override
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
-
 
 
 }

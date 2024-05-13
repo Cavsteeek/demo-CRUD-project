@@ -18,9 +18,6 @@ public class DeliveryInfo {
 
     private Integer numberOfPieces;
 
-    @ManyToOne
-    private User user;
-
     @OneToOne
     private Form form;
 
